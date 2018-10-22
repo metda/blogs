@@ -2,6 +2,7 @@
 
 This blog contains tutorial of MetDA website and some explanation of statistical analysis methods that are commonly used in metabolomics.
 
-```html
-   <span style="color:red">test</span>
+```diff
++ this will be highlighted in green
+- this will be highlighted in red
 ```

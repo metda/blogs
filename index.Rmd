@@ -1,7 +1,7 @@
 ---
-title: "MetDA website"
+title: "MetDA - blog"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  All about commonly adopted statistical analysis for metabolomics. We hope you enjoy it!
 site: radix::radix_website
 ---
 

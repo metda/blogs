@@ -1,0 +1,17 @@
+[
+  {
+    "path": "posts/2018-10-23-why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr/",
+    "title": "Just use Benjamini-Hochberg to control FDR!",
+    "description": "Tukey's test v.s. Benjamini-Hochberg. The latter is better.",
+    "author": [
+      {
+        "name": "Sili Fan",
+        "url": {}
+      }
+    ],
+    "date": "2018-10-23",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2018-10-23T11:33:35-07:00"
+  }
+]

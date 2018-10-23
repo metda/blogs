@@ -1,0 +1,23 @@
+---
+title: "Just use Benjamini-Hochberg to control FDR!"
+description: |
+  Tukey's test v.s. Benjamini-Hochberg. The latter is better.
+author:
+  - name: Sili Fan
+    url: {}
+    affiliation: West Coast Metabolomics Center
+date: 10-23-2018
+output:
+  radix::radix_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+
+
+```
+
+## Tukey's test 
+When people have multiple groups and have no prior hypothesis about which specific groups might differ, people usually use Tukey's test as a post hoc test that test all possible group comparisons. U

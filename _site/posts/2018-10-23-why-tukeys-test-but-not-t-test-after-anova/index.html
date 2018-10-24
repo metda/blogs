@@ -404,6 +404,10 @@ body {
   width: 100%;
 }
 
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
 .pandoc-table th:not([align]) {
   text-align: left;
 }
@@ -418,6 +422,10 @@ body {
 
 .l-screen-inset {
   padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
 }
 
 .shaded {
@@ -1185,9 +1193,19 @@ function init_common() {
   // prevent underline for linked images
   $('a > img').parent().css({'border-bottom' : 'none'});
 
-  // mark figures created by knitr chunks as 100% width
+  // mark non-body figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
-    $(this).find('img, .html-widget').css('width', '100%');
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
   });
 
   // auto-append index.html to post-preview links in file: protocol
@@ -1208,6 +1226,8 @@ function init_common() {
   $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
   $('.kable-table').children('table').addClass('pandoc-table');
 
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
 
   // initialize posts list
   if (window.init_posts_list)
@@ -1219,6 +1239,7 @@ function init_common() {
     $('#disqus_thread').toggleClass('hidden');
     if (!$('#disqus_thread').hasClass('hidden')) {
       var offset = $(this).offset();
+      $(window).resize();
       $('html, body').animate({
         scrollTop: offset.top - 35
       });
@@ -1236,7 +1257,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1340,68 +1360,33 @@ sum(significant_find==TRUE)/1000</code></pre>
 </div>
 <p>The real overall Type I error rate is 33.2% Actually, if the number of groups increase, the situation gets even worse.</p>
 <div class="layout-chunk" data-layout="l-body">
-<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-two
-</th>
-<th style="text-align:left;">
-three
-</th>
-<th style="text-align:left;">
-four
-</th>
-<th style="text-align:left;">
-five
-</th>
-<th style="text-align:left;">
-six
-</th>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">two</th>
+<th style="text-align: left;">three</th>
+<th style="text-align: left;">four</th>
+<th style="text-align: left;">five</th>
+<th style="text-align: left;">six</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Nominal Type I error
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
+<tr class="odd">
+<td>Nominal Type I error</td>
+<td style="text-align: left;">5.00%</td>
+<td style="text-align: left;">5.00%</td>
+<td style="text-align: left;">5.00%</td>
+<td style="text-align: left;">5.00%</td>
+<td style="text-align: left;">5.00%</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Actual overall Type I error
-</td>
-<td style="text-align:left;">
-5.00%
-</td>
-<td style="text-align:left;">
-12.20%
-</td>
-<td style="text-align:left;">
-20.30%
-</td>
-<td style="text-align:left;">
-28.60%
-</td>
-<td style="text-align:left;">
-36.60%
-</td>
+<tr class="even">
+<td>Actual overall Type I error</td>
+<td style="text-align: left;">5.00%</td>
+<td style="text-align: left;">12.20%</td>
+<td style="text-align: left;">20.30%</td>
+<td style="text-align: left;">28.60%</td>
+<td style="text-align: left;">36.60%</td>
 </tr>
 </tbody>
 </table>

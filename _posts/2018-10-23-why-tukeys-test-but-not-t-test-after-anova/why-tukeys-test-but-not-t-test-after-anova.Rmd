@@ -16,9 +16,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ```
-One-way ANOVA determines whether there are any statistically significant difference between the means of two or more independent groups. It is important to realize that the one-way ANOVA is an *omnibus* test statistic and cannot tell you which specific groups were significantly different from each other; it only tells you there are at least two groups were different. For example, you may want to know if the average height differed among Chinese, Indian, Japanese, and Korean. If the one-way ANOVA returns a *p*-value < 0.05, people usually conclude that the average heights of these four contries is different.
+One-way ANOVA determines whether there are any statistically significant difference between the means of two or more independent groups. It is important to realize that the one-way ANOVA is an *omnibus* test statistic and cannot tell you which specific groups were significantly different from each other; it only tells you there are at least two groups were different. For example, you may want to know if the average height differed among Chinese, Indian, Japanese, and Korean. If the one-way ANOVA returns a *p*-value < 0.05, people usually conclude that the average heights of people in these four contries is different.
 
-After detecting some difference among the groups, interest centers on which specific groups are different. If you have no prior hypotheses about which specific groups might differ, you can compare each pair of two-groups. Can we use Student t-test, as it is typically used when comparing two independent groups? The answer is *Nope*. Let's do a simulation study.
+After detecting some differences among the groups, interest centers on which specific groups are different. If you have no prior hypotheses about which specific groups might differ, you can compare each pair of two-groups. Can we use Student t-test, as it is typically used when comparing two independent groups? The answer is *Nope*. Let's do a simulation study.
 
 ### Using t-test
 
@@ -46,7 +46,7 @@ print(pairwise_t_tests)
 
 Good! There is no *p*-value less than 0.05 in the previous comparison table.
 
-Now let’s repeat the experiment 1000 times and see how many of them will find us at least two significant groups. Because our significant criterion is 5%, we expect to have a Type I error of 5%. Unfortunately, this is not true. See below,
+Now let’s repeat the experiment 1000 times and see how many of them will incorrectly find us at least two significant groups. Because our significant criterion is 5%, we expect to have a Type I error of 5% and 5% of the 1000 simutations return significance. Unfortunately, this is not true. See below,
 
 ```{r, echo=TRUE}
 significant_find = c() # TRUE, if a p value is < 0.05, otherwise FALSE

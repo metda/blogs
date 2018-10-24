@@ -19,9 +19,9 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-<title>MetDA website: Just use Benjamini-Hochberg!</title>
+<title>MetDA website: Why Tukey's test but not t-test after ANOVA?</title>
 
-<meta property="description" itemprop="description" content="Tukey&#39;s test v.s. Benjamini-Hochberg. The latter is better."/>
+<meta property="description" itemprop="description" content="Student t-test blows the type I error rate. Tukey&#39;s test controls the type I error rate."/>
 
 
 <!--  https://schema.org/Article -->
@@ -30,27 +30,27 @@
 <meta name="article:author" content="Sili Fan"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="MetDA website: Just use Benjamini-Hochberg!"/>
+<meta property="og:title" content="MetDA website: Why Tukey&#39;s test but not t-test after ANOVA?"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Tukey&#39;s test v.s. Benjamini-Hochberg. The latter is better."/>
+<meta property="og:description" content="Student t-test blows the type I error rate. Tukey&#39;s test controls the type I error rate."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="MetDA website"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="MetDA website: Just use Benjamini-Hochberg!"/>
-<meta property="twitter:description" content="Tukey&#39;s test v.s. Benjamini-Hochberg. The latter is better."/>
+<meta property="twitter:title" content="MetDA website: Why Tukey&#39;s test but not t-test after ANOVA?"/>
+<meta property="twitter:description" content="Student t-test blows the type I error rate. Tukey&#39;s test controls the type I error rate."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Just use Benjamini-Hochberg!"]},{"type":"character","attributes":{},"value":["Tukey's test v.s. Benjamini-Hochberg. The latter is better."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Sili Fan"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]},{"type":"character","attributes":{},"value":["West Coast Metabolomics Center"]}]}]},{"type":"character","attributes":{},"value":["10-23-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["radix::radix_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Why Tukey's test but not t-test after ANOVA?"]},{"type":"character","attributes":{},"value":["Student t-test blows the type I error rate. Tukey's test controls the type I error rate."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Sili Fan"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["10-23-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["radix::radix_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr_files/bowser-1.9.3/bowser.min.js","why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr_files/distill-2.2.21/template.v2.js","why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr_files/jquery-1.11.3/jquery.min.js","why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["why-tukeys-test-but-not-t-test-after-anova_files/bowser-1.9.3/bowser.min.js","why-tukeys-test-but-not-t-test-after-anova_files/distill-2.2.21/template.v2.js","why-tukeys-test-but-not-t-test-after-anova_files/jquery-1.11.3/jquery.min.js","why-tukeys-test-but-not-t-test-after-anova_files/kePrint-0.0.1/kePrint.js","why-tukeys-test-but-not-t-test-after-anova_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1236,6 +1236,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1251,7 +1252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Just use Benjamini-Hochberg!","description":"Tukey's test v.s. Benjamini-Hochberg. The latter is better.","authors":[{"author":"Sili Fan","authorURL":{},"affiliation":"West Coast Metabolomics Center","affiliationURL":"#"}],"publishedDate":"2018-10-23T00:00:00.000-07:00","citationText":"Fan, 2018"}
+{"title":"Why Tukey's test but not t-test after ANOVA?","description":"Student t-test blows the type I error rate. Tukey's test controls the type I error rate.","authors":[{"author":"Sili Fan","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2018-10-23T00:00:00.000-07:00","citationText":"Fan, 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1273,19 +1274,160 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Just use Benjamini-Hochberg!</h1>
-<p>Tukey’s test v.s. Benjamini-Hochberg. The latter is better.</p>
+<h1>Why Tukey’s test but not t-test after ANOVA?</h1>
+<p>Student t-test blows the type I error rate. Tukey’s test controls the type I error rate.</p>
 </div>
 
 <div class="d-byline">
-  Sili Fan true (West Coast Metabolomics Center)
+  Sili Fan true 
   
 <br/>10-23-2018
 </div>
 
 <div class="d-article">
-<h2 id="tukeys-test">Tukey’s test</h2>
-<p>When people have multiple groups and have no prior hypothesis about which specific groups might differ, people usually use Tukey’s test as a post hoc test that test all possible group comparisons. U</p>
+<p>One-way ANOVA determines whether there are any statistically significant difference between the means of two or more independent groups. It is important to realize that the one-way ANOVA is an <em>omnibus</em> test statistic and cannot tell you which specific groups were significantly different from each other; it only tells you there are at least two groups were different. For example, you may want to know if the average height differed among Chinese, Indian, Japanese, and Korean. If the one-way ANOVA returns a <em>p</em>-value &lt; 0.05, people usually conclude that the average heights of these four contries is different.</p>
+<p>After detecting some difference among the groups, interest centers on which specific groups are different. If you have no prior hypotheses about which specific groups might differ, you can compare each pair of two-groups. Can we use Student t-test, as it is typically used when comparing two independent groups? The answer is <em>Nope</em>. Let’s do a simulation study.</p>
+<h3 id="using-t-test">Using t-test</h3>
+<p>Suppose you have a factor of 6 groups, <em>A</em>, <em>B</em>, …, <em>F</em> with 4 observations per group:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+groups &lt;- factor(rep(LETTERS[1:6], rep(4,6)))
+print(groups)</code></pre>
+<pre><code>
+ [1] A A A A B B B B C C C C D D D D E E E E F F F F
+Levels: A B C D E F</code></pre>
+</div>
+<p>and suppose the response has no relationship to the groups (i.e. the null hypothesis holds)</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+response = rnorm(length(groups)) # randomly generate 24, e.g. length(groups), values as response.</code></pre>
+</div>
+<p>Since the data is randomly generated, we expect there is no significant result if we perform pairwise comparison using Student t test.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+pairwise_t_tests = pairwise.t.test(response, groups, p.adjust.method = &#39;none&#39;)
+print(pairwise_t_tests)</code></pre>
+<pre><code>
+    Pairwise comparisons using t tests with pooled SD 
+
+data:  response and groups 
+
+  A    B    C    D    E   
+B 0.89 -    -    -    -   
+C 0.53 0.62 -    -    -   
+D 0.48 0.40 0.19 -    -   
+E 0.49 0.58 0.95 0.17 -   
+F 0.86 0.74 0.42 0.60 0.38
+
+P value adjustment method: none </code></pre>
+</div>
+<p>Good! There is no <em>p</em>-value less than 0.05 in the previous comparison table.</p>
+<p>Now let’s repeat the experiment 1000 times and see how many of them will find us at least two significant groups. Because our significant criterion is 5%, we expect to have a Type I error of 5%. Unfortunately, this is not true. See below,</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+significant_find = c() # TRUE, if a p value is &lt; 0.05, otherwise FALSE
+for(i in 1:1000){
+  response = rnorm(length(groups))
+  pairwise_t_tests = pairwise.t.test(response, groups, p.adjust.method = &#39;none&#39;)
+  significant_find[i] = any(pairwise_t_tests$p.value&lt;0.05, na.rm = TRUE)
+}
+sum(significant_find==TRUE)/1000</code></pre>
+<pre><code>
+[1] 0.332</code></pre>
+</div>
+<p>The real overall Type I error rate is 33.2% Actually, if the number of groups increase, the situation gets even worse.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+two
+</th>
+<th style="text-align:left;">
+three
+</th>
+<th style="text-align:left;">
+four
+</th>
+<th style="text-align:left;">
+five
+</th>
+<th style="text-align:left;">
+six
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Nominal Type I error
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Actual overall Type I error
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+12.20%
+</td>
+<td style="text-align:left;">
+20.30%
+</td>
+<td style="text-align:left;">
+28.60%
+</td>
+<td style="text-align:left;">
+36.60%
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In fact, to control the type I error at 5%, we need to increase our t-critical value of <code>qt(0.975, 24-6)</code>, 2.1009. It tuens out that this value can be calculated using the “Studentized Range distribution”, using <code>qtukey(0.95,6,24-6)/sqrt(2)</code>. This is where the Tukey’s test comes from!</p>
+<h3 id="using-tukeys-test">Using Tukey’s test</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+significant_find = c() # TRUE, if a p value is &lt; 0.05, otherwise FALSE
+for(i in 1:1000){
+  response = rnorm(length(groups))
+  lm &lt;- lm(response ~ groups)
+  aov &lt;- aov(lm)
+  tukey.test &lt;- TukeyHSD(aov)
+  significant_find[i] = any(tukey.test$groups[,&quot;p adj&quot;]&lt;0.05, na.rm = TRUE)
+}
+sum(significant_find==TRUE)/1000</code></pre>
+<pre><code>
+[1] 0.047</code></pre>
+</div>
+<p>As a result, Tukey’s test returned a Type I error rate of 4.7%, which is close to the expected 5%.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Using Student t-tests as the post hoc test after ANOVA increase the type I error rate dramatically. The more groups of comparisons we have, the higher the type I error rate it will suffer. As a conclusion, Tukey’s test is recommanded, as it controls the type I error rate at 5% regardless of number of groups.</p>
+<hr />
+<h4 id="seemingy-confilicting-result-with-one-way-anova">Seemingy confilicting result with one-way ANOVA</h4>
+<p>It is not uncommon to find what appears to be a conflict between the results of the one-way ANOVA and a post hoc test such as Tukey’s post hoc test where one finds a statistically significant result for one, but not the other. For example, a statistically significant one-way ANOVA, but no pairwise comparison using the Tukey method that is statistically significant. There can be different reasons for this, such as the conservative or liberal nature of a particular test, but fundamentally it is due to the differences in the distributions used in the one-way ANOVA and Tukey post hoc test (Hsu, 1996). Alternately, you can have a statistically significant Tukey post hoc test, but a non-significant one-way ANOVA. Whether the conclusions from both these tests are in agreement depends on the distribution of the means (Kirk, 2013).</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

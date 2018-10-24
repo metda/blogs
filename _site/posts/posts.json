@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2018-10-23-why-we-should-almost-always-use-benjamini-hochberg-to-control-fdr/",
-    "title": "Just use Benjamini-Hochberg to control FDR!",
+    "title": "Just use Benjamini-Hochberg!",
     "description": "Tukey's test v.s. Benjamini-Hochberg. The latter is better.",
     "author": [
       {
@@ -12,6 +12,21 @@
     "date": "2018-10-23",
     "categories": [],
     "preview": {},
-    "last_modified": "2018-10-23T11:33:35-07:00"
+    "last_modified": "2018-10-23T18:53:25-07:00"
+  },
+  {
+    "path": "posts/2018-10-23-why-tukeys-test-but-not-t-test-after-anova/",
+    "title": "Why Tukey's test but not t-test after ANOVA?",
+    "description": "Student t-test blows the type I error rate. Tukey's test controls the type I error rate.",
+    "author": [
+      {
+        "name": "Sili Fan",
+        "url": {}
+      }
+    ],
+    "date": "2018-10-23",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2018-10-23T23:16:58-07:00"
   }
 ]

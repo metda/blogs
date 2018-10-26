@@ -50,7 +50,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["why-tukeys-test-but-not-t-test-after-anova_files/bowser-1.9.3/bowser.min.js","why-tukeys-test-but-not-t-test-after-anova_files/distill-2.2.21/template.v2.js","why-tukeys-test-but-not-t-test-after-anova_files/jquery-1.11.3/jquery.min.js","why-tukeys-test-but-not-t-test-after-anova_files/kePrint-0.0.1/kePrint.js","why-tukeys-test-but-not-t-test-after-anova_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["why-tukeys-test-but-not-t-test-after-anova_files/bowser-1.9.3/bowser.min.js","why-tukeys-test-but-not-t-test-after-anova_files/distill-2.2.21/template.v2.js","why-tukeys-test-but-not-t-test-after-anova_files/figure-html5/unnamed-chunk-6-1.png","why-tukeys-test-but-not-t-test-after-anova_files/jquery-1.11.3/jquery.min.js","why-tukeys-test-but-not-t-test-after-anova_files/kePrint-0.0.1/kePrint.js","why-tukeys-test-but-not-t-test-after-anova_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -404,10 +404,6 @@ body {
   width: 100%;
 }
 
-.pandoc-table>caption {
-  margin-bottom: 10px;
-}
-
 .pandoc-table th:not([align]) {
   text-align: left;
 }
@@ -422,10 +418,6 @@ body {
 
 .l-screen-inset {
   padding-right: 16px;
-}
-
-.l-screen .caption {
-  margin-left: 10px;
 }
 
 .shaded {
@@ -1193,19 +1185,9 @@ function init_common() {
   // prevent underline for linked images
   $('a > img').parent().css({'border-bottom' : 'none'});
 
-  // mark non-body figures created by knitr chunks as 100% width
+  // mark figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
-    var figures = $(this).find('img, .html-widget');
-    if ($(this).attr('data-layout') !== "l-body") {
-      figures.css('width', '100%');
-    } else {
-      figures.css('max-width', '100%');
-      figures.filter("[width]").each(function(i, val) {
-        var fig = $(this);
-        fig.css('width', fig.attr('width') + 'px');
-      });
-
-    }
+    $(this).find('img, .html-widget').css('width', '100%');
   });
 
   // auto-append index.html to post-preview links in file: protocol
@@ -1226,8 +1208,6 @@ function init_common() {
   $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
   $('.kable-table').children('table').addClass('pandoc-table');
 
-  // add figcaption style to table captions
-  $('caption').parent('table').addClass("figcaption");
 
   // initialize posts list
   if (window.init_posts_list)
@@ -1239,7 +1219,6 @@ function init_common() {
     $('#disqus_thread').toggleClass('hidden');
     if (!$('#disqus_thread').hasClass('hidden')) {
       var offset = $(this).offset();
-      $(window).resize();
       $('html, body').animate({
         scrollTop: offset.top - 35
       });
@@ -1257,6 +1236,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1305,8 +1285,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<p>One-way ANOVA determines whether there are any statistically significant difference between the means of two or more independent groups. It is important to realize that the one-way ANOVA is an <em>omnibus</em> test statistic and cannot tell you which specific groups were significantly different from each other; it only tells you there are at least two groups were different. For example, you may want to know if the average height differed among Chinese, Indian, Japanese, and Korean. If the one-way ANOVA returns a <em>p</em>-value &lt; 0.05, people usually conclude that the average heights of these four contries is different.</p>
-<p>After detecting some difference among the groups, interest centers on which specific groups are different. If you have no prior hypotheses about which specific groups might differ, you can compare each pair of two-groups. Can we use Student t-test, as it is typically used when comparing two independent groups? The answer is <em>Nope</em>. Let’s do a simulation study.</p>
+<p>One-way ANOVA determines whether there are any statistically significant difference between the means of two or more independent groups. It is important to realize that the one-way ANOVA is an <em>omnibus</em> test statistic and cannot tell you which specific groups were significantly different from each other; it only tells you there are at least two groups were different. For example, you may want to know if the average height differed among Chinese, Indian, Japanese, and Korean. If the one-way ANOVA returns a <em>p</em>-value &lt; 0.05, people usually conclude that the average heights of people in these four contries is different.</p>
+<p>After detecting some differences among the groups, interest centers on which specific groups are different. If you have no prior hypotheses about which specific groups might differ, you can compare each pair of two-groups. Can we use Student t-test, as it is typically used when comparing two independent groups? The answer is <em>Nope</em>. Let’s do a simulation study.</p>
 <h3 id="using-t-test">Using t-test</h3>
 <p>Suppose you have a factor of 6 groups, <em>A</em>, <em>B</em>, …, <em>F</em> with 4 observations per group:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1345,7 +1325,7 @@ F 0.86 0.74 0.42 0.60 0.38
 P value adjustment method: none </code></pre>
 </div>
 <p>Good! There is no <em>p</em>-value less than 0.05 in the previous comparison table.</p>
-<p>Now let’s repeat the experiment 1000 times and see how many of them will find us at least two significant groups. Because our significant criterion is 5%, we expect to have a Type I error of 5%. Unfortunately, this is not true. See below,</p>
+<p>Now let’s repeat the experiment 1000 times and see how many of them will incorrectly find us at least two significant groups. Because our significant criterion is 5%, we expect to have a Type I error of 5% and 5% of the 1000 simutations return significance. Unfortunately, this is not true. See below,</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 significant_find = c() # TRUE, if a p value is &lt; 0.05, otherwise FALSE
@@ -1360,33 +1340,71 @@ sum(significant_find==TRUE)/1000</code></pre>
 </div>
 <p>The real overall Type I error rate is 33.2% Actually, if the number of groups increase, the situation gets even worse.</p>
 <div class="layout-chunk" data-layout="l-body">
-<table>
+<p><img src="why-tukeys-test-but-not-t-test-after-anova_files/figure-html5/unnamed-chunk-6-1.png" width="150%" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th></th>
-<th style="text-align: left;">two</th>
-<th style="text-align: left;">three</th>
-<th style="text-align: left;">four</th>
-<th style="text-align: left;">five</th>
-<th style="text-align: left;">six</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+two
+</th>
+<th style="text-align:left;">
+three
+</th>
+<th style="text-align:left;">
+four
+</th>
+<th style="text-align:left;">
+five
+</th>
+<th style="text-align:left;">
+six
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Nominal Type I error</td>
-<td style="text-align: left;">5.00%</td>
-<td style="text-align: left;">5.00%</td>
-<td style="text-align: left;">5.00%</td>
-<td style="text-align: left;">5.00%</td>
-<td style="text-align: left;">5.00%</td>
+<tr>
+<td style="text-align:left;">
+Nominal Type I error
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
 </tr>
-<tr class="even">
-<td>Actual overall Type I error</td>
-<td style="text-align: left;">5.00%</td>
-<td style="text-align: left;">12.20%</td>
-<td style="text-align: left;">20.30%</td>
-<td style="text-align: left;">28.60%</td>
-<td style="text-align: left;">36.60%</td>
+<tr>
+<td style="text-align:left;">
+Actual overall Type I error
+</td>
+<td style="text-align:left;">
+5.00%
+</td>
+<td style="text-align:left;">
+12.20%
+</td>
+<td style="text-align:left;">
+20.30%
+</td>
+<td style="text-align:left;">
+28.60%
+</td>
+<td style="text-align:left;">
+36.60%
+</td>
 </tr>
 </tbody>
 </table>
@@ -1405,9 +1423,9 @@ for(i in 1:1000){
 }
 sum(significant_find==TRUE)/1000</code></pre>
 <pre><code>
-[1] 0.047</code></pre>
+[1] 0.049</code></pre>
 </div>
-<p>As a result, Tukey’s test returned a Type I error rate of 4.7%, which is close to the expected 5%.</p>
+<p>As a result, Tukey’s test returned a Type I error rate of 4.9%, which is close to the expected 5%.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>Using Student t-tests as the post hoc test after ANOVA increase the type I error rate dramatically. The more groups of comparisons we have, the higher the type I error rate it will suffer. As a conclusion, Tukey’s test is recommanded, as it controls the type I error rate at 5% regardless of number of groups.</p>
 <hr />
